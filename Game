@@ -1,4 +1,8 @@
 class Game
 {
-    
+    public function __construct()
+    {
+        echo "Game class instantiated.";
+        thats why i rock;
+    }
 }
