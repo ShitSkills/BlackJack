@@ -4,7 +4,6 @@ public class Hand{
 
     public Hand(Card[] hand){
         this.hand = hand;
-        
     }
 
     public void addCard(Card card){
