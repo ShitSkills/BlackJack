@@ -11,6 +11,10 @@ public class Hand{
 
     }
 
+    public int getCards(){
+        return hand.length;
+    }
+
     public int getValue(){
         int wert = 0;
         for(int i=0; i<hand.length; i++){
@@ -19,15 +23,15 @@ public class Hand{
         return wert;
     }
 
-    public void hasBlackJack(){
-        if(getValue() == 21){
-            System.out.println("Gewonnen");
-        }
+    public boolean hasBlackJack(){
+        return getValue() == 21 && getCards() == 2;
     }
 
-    public void isBust(){
-        if(getValue() > 21){
-            System.out.println("Verloren");
-        }
+    public boolean isBust(){
+        return getValue() > 21;
+    }
+
+    public void clear(){
+        hand = new Card[0];
     }
 }

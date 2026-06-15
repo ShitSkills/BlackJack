@@ -31,12 +31,12 @@ public class Player
 
     public boolean isBusted()
     {
-        return getHandValue() > 21;
+        return hand.isBust();
     }
 
     public boolean hasBlackJack()
     {
-        return getHandValue() == 21 && hand.getCards().size() == 2;
+        return hand.hasBlackJack();
     }
 
     public void resetHand()
