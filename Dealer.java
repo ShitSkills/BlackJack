@@ -23,7 +23,7 @@ public class Dealer extends Player
         {
             return true; 
         }
-        return getHandValue() >= player.getHandValue();
+        return getHandValue() > player.getHandValue();
     }
     
 }
