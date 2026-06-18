@@ -1,8 +1,8 @@
 //package gui1;
 import javax.swing.SwingUtilities;
 
-public class Game {
-    
+public class Game
+{
     private GUI g; // ← Hier oben nur deklarieren
     private Player player;
     private Dealer dealer;
@@ -23,12 +23,15 @@ public class Game {
         dealer.resetHand();
 
         // Spieler erhält 2 Karten
-        player.takeCard(deck.dealCard());
-        player.takeCard(deck.dealCard());
+        Card pcarddeck.drawCard();
+        Card cardp2= deck.drawCard();
+
+        player.takeCard(card1);
+        player.takeCard(card2);
 
         // Dealer erhält 2 Karten
-        dealer.takeCard(deck.dealCard());
-        dealer.takeCard(deck.dealCard());
+        dealer.takeCard(deck.drawCard());
+        dealer.takeCard(deck.drawCard());
 
         updateGUI();
     }
