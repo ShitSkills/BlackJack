@@ -43,4 +43,14 @@ public class Player
     {
         hand.clear();
     }
+
+    public int getTotalHandValue()
+    {
+        return hand.getTotalValue();
+    }
+
+    public void revealHand()
+    {
+        hand.revealAllCards();
+    }
 }

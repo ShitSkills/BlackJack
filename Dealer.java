@@ -14,25 +14,30 @@ public class Dealer extends Player
     }
 
     public void dealerDeal(Deck deck) {
-    // Erste Karte normal
-    takeCard(deck.drawCard());
-    // Zweite Karte verdeckt
-    Card secondCard = deck.drawCard();
-    secondCard.setFaceDown(true);  // ← Oder via Hand
-    takeCard(secondCard);
-}
+        // Erste Karte offen
+        takeCard(deck.drawCard());
+        
+        // Zweite Karte verdeckt
+        Card secondCard = deck.drawCard();
+        secondCard.setFaceDown(true);
+        takeCard(secondCard);
+    }
 
     public boolean beats(Player player) 
     {
-        if (getHandValue() > 21) 
+        // Nutze getTotalHandValue() für finalen Vergleich (mit allen Karten)
+        int dealerValue = getTotalHandValue();
+        int playerValue = player.getTotalHandValue();
+        
+        if (dealerValue > 21) 
         {
             return false; 
         }
-        if (player.getHandValue() > 21) 
+        if (playerValue > 21) 
         {
             return true; 
         }
-        return getHandValue() > player.getHandValue();
+        return dealerValue > playerValue;
     }
     
 }

@@ -2,12 +2,12 @@ public class Card
 {
     private String suit;        // P , H, 
     private String rank;        // 2 - 10 B, Q, K, A
-    private boolean faceDown;   // Für verdeckte Dealer-Karten
+    private boolean faceDown;   // Ist die Karte verdeckt?
 
     public Card(String suit, String rank) {
         this.suit = suit;
         this.rank = rank;
-        this.faceDown = false;
+        this.faceDown = false;  // Standardmäßig offen
     }
 
     public int getValue()
@@ -52,12 +52,21 @@ public class Card
         this.faceDown = faceDown;
     }
 
+    public void flipCard()
+    {
+        this.faceDown = !this.faceDown;
+    }
+
+    public String getDisplayValue()
+    {
+        if (faceDown) {
+            return "XX";  // Verdeckte Karte anzeigen
+        }
+        return toString();
+    }
+
     public String toString()
     {
-        if (faceDown)
-        {
-            return "[Verdeckt]";
-        }
         return rank + suit;
     }
 }
