@@ -13,7 +13,7 @@ public class Deck
  
     }
 
-    private void createDeck(int numofDecks)
+    public void createDeck(int numofDecks)
     {
         String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
         String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
@@ -27,11 +27,15 @@ public class Deck
                 }
             }
         }
+        
+        shuffle();
     }
+    
     public void shuffle()
     {
         Collections.shuffle(cards);
     }
+
     public Card drawCard()
     {
         return cards.remove(0); 
@@ -40,7 +44,7 @@ public class Deck
     {
         return cards.size();
     }
-Deck deck = new Deck(6);
+
 
 }
 
