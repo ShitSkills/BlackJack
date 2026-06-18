@@ -110,23 +110,27 @@ public class GUI extends JFrame {
 		btnNeueRunde = new JButton("Neue Runde");
 		btnNeueRunde.setBounds(312, 5, 91, 23);
 		buttonPanel.add(btnNeueRunde);
+        //btnNeueRunde.addActionListener(e -> game.neueRunde());
 		
 		btnDouble = new JButton("Double");
 		btnDouble.setBounds(408, 5, 65, 23);
 		buttonPanel.add(btnDouble);
+        btnDouble.addActionListener(e -> game.Double());
 		
 		btnHit = new JButton("Hit");
 		btnHit.setBounds(478, 5, 45, 23);
 		buttonPanel.add(btnHit);
-		btnHit.addActionListener(e -> addCardToPlayer("10"));
+		btnHit.addActionListener(e -> game.hit());
 		
 		btnStand = new JButton("Stand");
 		btnStand.setBounds(528, 5, 61, 23);
 		buttonPanel.add(btnStand);
-		
+        btnStand.addActionListener(e -> game.stand());
+
 		btnSplit = new JButton("Split");
 		btnSplit.setBounds(594, 5, 53, 23);
 		buttonPanel.add(btnSplit);
+        btnSplit.addActionListener(e -> game.split());
 
 	}
 	
@@ -136,4 +140,30 @@ public class GUI extends JFrame {
 	    playerCardsPanel.revalidate();
 	    playerCardsPanel.repaint();
 	}
+
+    public void addCardToDealer(String card) {
+	    JLabel cardLabel = new JLabel(card.toString());
+	    dealerCardsPanel.add(cardLabel);
+	    dealerCardsPanel.revalidate();
+	    dealerCardsPanel.repaint();
+	}
+
+    public void clearCards()
+    {
+        playerCardsPanel.removeAll();
+        dealerCardsPanel.removeAll();
+        playerCardsPanel.revalidate();
+        playerCardsPanel.repaint();
+        dealerCardsPanel.revalidate();
+        dealerCardsPanel.repaint();
+    }
+
+    public void updatePlayerValue(int value) {
+        lblSpielerWert.setText("Wert: " + value);
+    }
+
+    public void updateDealerValue(int value) {
+        lblDealerWert.setText("Wert: " + value);
+    }
+
 }
