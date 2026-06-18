@@ -13,13 +13,6 @@ public class Dealer extends Player
         }
     }
 
-    public void showFirstCard() 
-    {
-        
-        System.out.println(getHand().getCard(0));
-    
-    }
-
     public boolean beats(Player player) 
     {
         if (getHandValue() > 21) 

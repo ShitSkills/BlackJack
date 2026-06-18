@@ -2,8 +2,9 @@ public class Hand{
     
     private Card[] hand;
 
-    public Hand(Card[] hand){
-        this.hand = hand;
+    public Hand()
+    {
+        hand = new Card[15];
     }
 
     public void addCard(Card card){
@@ -33,4 +34,5 @@ public class Hand{
     public void clear(){
         hand = new Card[0];
     }
+
 }
