@@ -13,6 +13,15 @@ public class Dealer extends Player
         }
     }
 
+    public void dealerDeal(Deck deck) {
+    // Erste Karte normal
+    takeCard(deck.drawCard());
+    // Zweite Karte verdeckt
+    Card secondCard = deck.drawCard();
+    secondCard.setFaceDown(true);  // ← Oder via Hand
+    takeCard(secondCard);
+}
+
     public boolean beats(Player player) 
     {
         if (getHandValue() > 21) 
