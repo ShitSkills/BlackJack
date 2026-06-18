@@ -31,9 +31,25 @@ public class Hand{
 
     public int getValue(){
         int wert = 0;
+        int aces = 0;
+        
+        // Erst alle Kartenwerte addieren
         for(int i=0; i<hand.length; i++){
-            wert += hand[i].getValue();
+            if(hand[i] != null){
+                wert += hand[i].getValue();
+                // Zähle Aces (mit Wert 11)
+                if(hand[i].getRank().equals("A")){
+                    aces++;
+                }
+            }
         }
+        
+        // Wenn über 21 und mindestens ein Ace vorhanden, rechne Aces als 1 statt 11 um
+        while(wert > 21 && aces > 0){
+            wert -= 10;  // Reduziere um 10 (11-1 pro Ace)
+            aces--;
+        }
+        
         return wert;
     }
 
@@ -47,7 +63,25 @@ public class Hand{
     }
 
     public void clear(){
-        hand = new Card[0];
+        for(int i=0; i<hand.length; i++){
+            hand[i] = null;
+        }
+    }
+
+    public void hideFirstCard()
+    {
+        if(hand[0] != null)
+        {
+            hand[0].setFaceDown(true);
+        }
+    }
+
+    public void revealFirstCard()
+    {
+        if(hand[0] != null)
+        {
+            hand[0].setFaceDown(false);
+        }
     }
 
 }
