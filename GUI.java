@@ -134,14 +134,14 @@ public class GUI extends JFrame {
 
 	}
 	
-	public void addCardToPlayer(String card) {
+	public void addCardToPlayer(Card card) {
 	    JLabel cardLabel = new JLabel(card.toString());
 	    playerCardsPanel.add(cardLabel);
 	    playerCardsPanel.revalidate();
 	    playerCardsPanel.repaint();
 	}
 
-    public void addCardToDealer(String card) {
+    public void addCardToDealer(Card card) {
 	    JLabel cardLabel = new JLabel(card.toString());
 	    dealerCardsPanel.add(cardLabel);
 	    dealerCardsPanel.revalidate();
