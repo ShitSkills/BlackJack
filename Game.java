@@ -25,5 +25,7 @@ public class Game {
     public void hit() {
         System.out.println("Hit gedrückt");
     }
-    
+    public void stand(){}
+    public void Double(){}
+    public void split(){}
 }
