@@ -7,12 +7,26 @@ public class Hand{
         hand = new Card[15];
     }
 
-    public void addCard(Card card){
+    public void addCard(Card card)
+    {
+        for(int i=0; i<hand.length; i++){
+            if(hand[i] == null){
+                hand[i] = card;
+                break;
+            }
+        }
 
     }
 
-    public int getCards(){
-        return hand.length;
+    public int getCards()           //Falsch getCards() gibt 15 zurück (nicht 2), also ist hasBlackJack() immer false!
+    {
+        int count = 0;
+        for(int i=0; i<hand.length; i++){
+            if(hand[i] != null){
+                count++;
+            }
+        }
+        return count;
     }
 
     public int getValue(){
@@ -23,7 +37,8 @@ public class Hand{
         return wert;
     }
 
-    public boolean hasBlackJack(){
+    public boolean hasBlackJack()               //Falsch, da getCards() 15 zurückgibt, also ist hasBlackJack() immer false!
+    {              
         return getValue() == 21 && getCards() == 2;
     }
 
