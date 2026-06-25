@@ -1,5 +1,6 @@
 //package gui1;
 import javax.swing.SwingUtilities;
+import javax.swing.JLabel;
 
 public class Game
 {
@@ -18,27 +19,37 @@ public class Game
     }
 
     public void startGame() {
-        deck.shuffle();
         player.resetHand();
         dealer.resetHand();
+        deck.shuffle();
 
         // Spieler erhält 2 Karten
-        Card pcarddeck.drawCard();
+        Card cardp1= deck.drawCard();
         Card cardp2= deck.drawCard();
 
-        player.takeCard(card1);
-        player.takeCard(card2);
+        player.takeCard(cardp1);
+        player.takeCard(cardp2);
 
         // Dealer erhält 2 Karten
-        dealer.takeCard(deck.drawCard());
-        dealer.takeCard(deck.drawCard());
+        Card cardd1= deck.drawCard();
+        Card cardd2= deck.drawCard();
 
-        updateGUI();
+        dealer.takeCard(cardd1);
+        dealer.takeCard(cardd2);
+
+        // GUI aktualisieren
+        g.addCardToPlayer(cardp1);
+        g.addCardToPlayer(cardp2);
+        g.addCardToDealer(cardd1);
+        g.addCardToDealer(cardd2);
+
+        g.updatePlayerValue(player.getHandValue());
+        g.updateDealerValue(dealer.getHandValue());
     }
 
     public void NeueRunde()
     {
-    
+        startGame();
     }
     
 
@@ -50,8 +61,9 @@ public class Game
     player.takeCard(card);
 
     // 3. GUI aktualisieren
-    g.addCardToPlayer(card.toString());
-    lblSpielerWert.setText("Wert: " + player.getHandValue());
+    g.addCardToPlayer(card);
+    g.updatePlayerValue(player.getHandValue());
+    g.updateDealerValue(dealer.getHandValue());
 
     // 4. Prüfen, ob der Spieler verloren hat oder Blackjack hat
     if (player.isBusted()) {
@@ -59,13 +71,38 @@ public class Game
         endRound("Bust! Dealer gewinnt.");
     } else if (player.hasBlackJack()) {
         // Runde beenden oder Dealer-Zug starten
+        endRound("Blackjack! Spieler gewinnt.");
         stand();
     }
     }
     
     public void stand()
     {
+        // Dealer zieht Karten, bis er mindestens 17 Punkte hat
+        while (dealer.getHandValue() < 17) {
+            Card card = deck.drawCard();
+            dealer.takeCard(card);
+            g.addCardToDealer(card);
+            g.updateDealerValue(dealer.getHandValue());
+        }
 
+        // Ergebnis prüfen
+        if (dealer.isBusted()) {
+            endRound("Dealer Bust! Spieler gewinnt.");
+        } else if (dealer.hasBlackJack()) {
+            endRound("Dealer hat Blackjack! Dealer gewinnt.");
+        } else {
+            int playerValue = player.getHandValue();
+            int dealerValue = dealer.getHandValue();
+
+            if (playerValue > dealerValue) {
+                endRound("Spieler gewinnt!");
+            } else if (playerValue < dealerValue) {
+                endRound("Dealer gewinnt!");
+            } else {
+                endRound("Unentschieden!");
+            }
+        }
     }
 
     public void Double()
@@ -75,6 +112,10 @@ public class Game
 
     public void split()
     {
+        
+    }
 
+    public void endRound(String message) {
+        System.out.println(message);
     }
 }
