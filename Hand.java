@@ -55,7 +55,7 @@ public class Hand{
 
     public boolean hasBlackJack()               //Falsch, da getCards() 15 zurückgibt, also ist hasBlackJack() immer false!
     {              
-        return getValue() == 21 && getCards() == 2;
+        return getTotalValue() == 21 && getCards() == 2;
     }
 
     public boolean isBust(){
