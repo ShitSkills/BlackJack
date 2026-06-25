@@ -4,7 +4,7 @@ public class Card
     private String rank;        // 2 - 10 B, Q, K, A
     private boolean faceDown;   // Ist die Karte verdeckt?
 
-    public Card(String suit, String rank) {
+    public Card(String rank, String suit) {
         this.suit = suit;
         this.rank = rank;
         this.faceDown = false;  // Standardmäßig offen
