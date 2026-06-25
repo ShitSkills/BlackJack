@@ -19,11 +19,17 @@ public class Game
     }
 
     public void startGame() {
+        deck.shuffle();
+        NeueRunde();
+    }
+
+    public void NeueRunde()
+    {
+        g.clearCards();
         player.resetHand();
         dealer.resetHand();
-        deck.shuffle();
 
-        // Spieler erhält 2 Karten
+         // Spieler erhält 2 Karten
         Card cardp1= deck.drawCard();
         Card cardp2= deck.drawCard();
 
@@ -45,11 +51,6 @@ public class Game
 
         g.updatePlayerValue(player.getHandValue());
         g.updateDealerValue(dealer.getHandValue());
-    }
-
-    public void NeueRunde()
-    {
-        startGame();
     }
     
 
@@ -107,12 +108,12 @@ public class Game
 
     public void Double()
     {
-
+        
     }
 
     public void split()
     {
-        
+
     }
 
     public void endRound(String message) {

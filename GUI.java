@@ -110,7 +110,7 @@ public class GUI extends JFrame {
 		btnNeueRunde = new JButton("Neue Runde");
 		btnNeueRunde.setBounds(312, 5, 91, 23);
 		buttonPanel.add(btnNeueRunde);
-        //btnNeueRunde.addActionListener(e -> game.neueRunde());
+        btnNeueRunde.addActionListener(e -> game.NeueRunde());
 		
 		btnDouble = new JButton("Double");
 		btnDouble.setBounds(408, 5, 65, 23);
