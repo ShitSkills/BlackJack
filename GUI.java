@@ -1,6 +1,8 @@
 //package gui1;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -70,11 +72,13 @@ public class GUI extends JFrame {
 		dealerPanel.setLayout(null);
 
 		lblDealer = new JLabel("Dealer");
-		lblDealer.setBounds(443, 5, 32, 14);
+		lblDealer.setBounds(420, 5, 90, 25);
+		lblDealer.setFont(new Font("SansSerif", Font.BOLD, 18));
 		dealerPanel.add(lblDealer);
 
 		lblDealerWert = new JLabel("Wert: 0");
-		lblDealerWert.setBounds(487, 5, 37, 14);
+		lblDealerWert.setBounds(520, 5, 140, 25);
+		lblDealerWert.setFont(new Font("SansSerif", Font.BOLD, 18));
 		dealerPanel.add(lblDealerWert);
 
 		dealerCardsPanel = new JPanel();
@@ -87,11 +91,13 @@ public class GUI extends JFrame {
 		playerPanel.setLayout(null);
 
 		lblPlayer = new JLabel("Spieler");
-		lblPlayer.setBounds(443, 5, 32, 14);
+		lblPlayer.setBounds(420, 5, 90, 25);
+		lblPlayer.setFont(new Font("SansSerif", Font.BOLD, 18));
 		playerPanel.add(lblPlayer);
 
 		lblSpielerWert = new JLabel("Wert: 0");
-		lblSpielerWert.setBounds(480, 5, 37, 14);
+		lblSpielerWert.setBounds(520, 5, 140, 25);
+		lblSpielerWert.setFont(new Font("SansSerif", Font.BOLD, 18));
 		playerPanel.add(lblSpielerWert);
 
 		playerCardsPanel = new JPanel();
@@ -154,6 +160,17 @@ public class GUI extends JFrame {
 			dealerCardsPanel.revalidate();
 			dealerCardsPanel.repaint();
 		}
+	}
+
+	public void refreshDealerCards(Hand hand) {
+		dealerCardsPanel.removeAll();
+		for (int i = 0; i < hand.getCardCount(); i++) {
+			Card card = hand.getCard(i);
+			addCardToDealer(card);
+		}
+		dealerCardsPanel.revalidate();
+		dealerCardsPanel.repaint();
+
 	}
 
 	public void clearCards() {

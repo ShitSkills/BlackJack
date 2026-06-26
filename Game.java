@@ -76,6 +76,9 @@ public class Game {
     }
 
     public void stand() {
+        dealer.revealHand();
+        g.refreshDealerCards(dealer.getHand());
+        g.updateDealerValue(dealer.getHandValue()); // Dealers face down card wird gezeigt
         // Dealer zieht Karten, bis er mindestens 17 Punkte hat
         while (dealer.getHandValue() < 17) {
             Card card = deck.drawCard();
