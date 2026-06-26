@@ -1,15 +1,14 @@
+
 //package gui1;
 import javax.swing.SwingUtilities;
 import javax.swing.JLabel;
 
-public class Game
-{
+public class Game {
     private GUI g; // ← Hier oben nur deklarieren
     private Player player;
     private Dealer dealer;
     private Deck deck;
 
-    
     public Game() {
         g = new GUI(this); // ← Hier im Konstruktor erzeugen
         g.setVisible(true);
@@ -23,22 +22,22 @@ public class Game
         NeueRunde();
     }
 
-    public void NeueRunde()
-    {
+    public void NeueRunde() {
         g.clearCards();
         player.resetHand();
         dealer.resetHand();
 
-         // Spieler erhält 2 Karten
-        Card cardp1= deck.drawCard();
-        Card cardp2= deck.drawCard();
+        // Spieler erhält 2 Karten
+        Card cardp1 = deck.drawCard();
+        Card cardp2 = deck.drawCard();
 
         player.takeCard(cardp1);
         player.takeCard(cardp2);
 
         // Dealer erhält 2 Karten
-        Card cardd1= deck.drawCard();
-        Card cardd2= deck.drawCard();
+        Card cardd1 = deck.drawCard();
+        Card cardd2 = deck.drawCard();
+        cardd1.setFaceDown(true);
 
         dealer.takeCard(cardd1);
         dealer.takeCard(cardd2);
@@ -52,33 +51,31 @@ public class Game
         g.updatePlayerValue(player.getHandValue());
         g.updateDealerValue(dealer.getHandValue());
     }
-    
 
     public void hit() {
-    // 1. Karte ziehen
-    Card card = deck.drawCard();
+        // 1. Karte ziehen
+        Card card = deck.drawCard();
 
-    // 2. Spieler bekommt die Karte
-    player.takeCard(card);
+        // 2. Spieler bekommt die Karte
+        player.takeCard(card);
 
-    // 3. GUI aktualisieren
-    g.addCardToPlayer(card);
-    g.updatePlayerValue(player.getHandValue());
-    g.updateDealerValue(dealer.getHandValue());
+        // 3. GUI aktualisieren
+        g.addCardToPlayer(card);
+        g.updatePlayerValue(player.getHandValue());
+        g.updateDealerValue(dealer.getHandValue());
 
-    // 4. Prüfen, ob der Spieler verloren hat oder Blackjack hat
-    if (player.isBusted()) {
-        // Runde beenden: Dealer gewinnt
-        endRound("Bust! Dealer gewinnt.");
-    } else if (player.hasBlackJack()) {
-        // Runde beenden oder Dealer-Zug starten
-        endRound("Blackjack! Spieler gewinnt.");
-        stand();
+        // 4. Prüfen, ob der Spieler verloren hat oder Blackjack hat
+        if (player.isBusted()) {
+            // Runde beenden: Dealer gewinnt
+            endRound("Bust! Dealer gewinnt.");
+        } else if (player.hasBlackJack()) {
+            // Runde beenden oder Dealer-Zug starten
+            endRound("Blackjack! Spieler gewinnt.");
+            stand();
+        }
     }
-    }
-    
-    public void stand()
-    {
+
+    public void stand() {
         // Dealer zieht Karten, bis er mindestens 17 Punkte hat
         while (dealer.getHandValue() < 17) {
             Card card = deck.drawCard();
@@ -106,13 +103,11 @@ public class Game
         }
     }
 
-    public void Double()
-    {
-        
+    public void Double() {
+
     }
 
-    public void split()
-    {
+    public void split() {
 
     }
 
