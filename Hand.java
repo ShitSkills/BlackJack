@@ -42,7 +42,7 @@ public class Hand {
             if (hand[i] != null && !hand[i].isFaceDown()) {
                 wert += hand[i].getValue();
                 // Zähle Aces (mit Wert 11)
-                if (hand[i].getRank().equals("A")) {
+                if (hand[i].isAce()) {
                     aces++;
                 }
             }
@@ -74,7 +74,7 @@ public class Hand {
         for (int i = 0; i < hand.length; i++) {
             if (hand[i] != null) {
                 wert += hand[i].getValue();
-                if (hand[i].getRank().equals("A")) {
+                if (hand[i].isAce()) {
                     aces++;
                 }
             }

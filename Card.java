@@ -11,14 +11,15 @@ public class Card {
     }
 
     public int getValue() {
-        if (rank.equals("A")) {
+        String r = rank == null ? "" : rank.trim().toLowerCase();
+        if (r.equals("ass")) {
             return 11;
         }
-        if (rank.equals("K") || rank.equals("Q") || rank.equals("J")) {
+        if (r.equals("könig") || r.equals("dame") || r.equals("bube")) {
             return 10;
         }
         try {
-            int numRank = Integer.parseInt(rank);
+            int numRank = Integer.parseInt(r);
             if (numRank >= 2 && numRank <= 10) {
                 return numRank;
             }
@@ -26,6 +27,11 @@ public class Card {
             // Ungültiger Rang
         }
         return 0;
+    }
+
+    public boolean isAce() {
+        String r = rank == null ? "" : rank.trim().toLowerCase();
+        return r.equals("ass") || r.equals("a") || r.equals("ace");
     }
 
     public String getRank() {

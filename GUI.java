@@ -10,6 +10,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+
 public class GUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -34,6 +38,11 @@ public class GUI extends JFrame {
 	private int dealerCardCount = 0;
 
 	private Game game;
+
+	private final int cardW = 60;
+	private final int cardH = 90;
+	private final int offsetX = 15;
+	private final int offsetY = 15;
 
 	/**
 	 * Launch the application.
@@ -82,6 +91,7 @@ public class GUI extends JFrame {
 		dealerPanel.add(lblDealerWert);
 
 		dealerCardsPanel = new JPanel();
+		dealerCardsPanel.setLayout(null);
 		dealerCardsPanel.setBounds(10, 35, 940, 190);
 		dealerPanel.add(dealerCardsPanel);
 
@@ -101,6 +111,7 @@ public class GUI extends JFrame {
 		playerPanel.add(lblSpielerWert);
 
 		playerCardsPanel = new JPanel();
+		playerCardsPanel.setLayout(null);
 		playerCardsPanel.setBounds(10, 35, 940, 190);
 		playerPanel.add(playerCardsPanel);
 
@@ -141,25 +152,65 @@ public class GUI extends JFrame {
 
 	}
 
+	private ImageIcon loadImage(String path, int w, int h) {
+		File f = new File(path);
+		if (!f.exists())
+			return null;
+		ImageIcon ico = new ImageIcon(f.getPath());
+		Image img = ico.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
+		return new ImageIcon(img);
+	}
+
+	/*
+	 * public void addCardToPlayer(Card card) {
+	 * String base = "Bilder/" + card.toString() + ".jpg"; // z.B.
+	 * "Bilder/KreuzBube.jpg"
+	 * ImageIcon icon = loadImage(base, cardW, cardH);
+	 * JLabel label = (icon != null) ? new JLabel(icon) : new
+	 * JLabel(card.toString());
+	 * 
+	 * playerCardsPanel.add(label);
+	 * playerCardsPanel.revalidate();
+	 * playerCardsPanel.repaint();
+	 * }
+	 */
+
 	public void addCardToPlayer(Card card) {
-		JLabel cardLabel = new JLabel(card.toString());
-		playerCardsPanel.add(cardLabel);
+		String base = "Bilder/" + card.toString() + ".jpg";
+		ImageIcon icon = loadImage(base, cardW, cardH);
+		JLabel label = (icon != null) ? new JLabel(icon) : new JLabel(card.toString());
+
+		int index = playerCardsPanel.getComponentCount(); // Wie viele Karten sind schon drin?
+		int x = 450 + index * offsetX; // Abstand zwischen den Karten
+		int y = 100 - index * offsetY;
+
+		label.setBounds(x, y, cardW, cardH);
+		playerCardsPanel.add(label);
+		playerCardsPanel.setComponentZOrder(label, 0);
 		playerCardsPanel.revalidate();
 		playerCardsPanel.repaint();
 	}
 
 	public void addCardToDealer(Card card) {
+		ImageIcon icon;
 		if (card.isFaceDown()) {
-			JLabel cardLabel = new JLabel("??");
-			dealerCardsPanel.add(cardLabel);
-			dealerCardsPanel.revalidate();
-			dealerCardsPanel.repaint();
+			icon = loadImage("Bilder/Kartenrücken.jpg", cardW, cardH);
 		} else {
-			JLabel cardLabel = new JLabel(card.toString());
-			dealerCardsPanel.add(cardLabel);
-			dealerCardsPanel.revalidate();
-			dealerCardsPanel.repaint();
+			String base = "Bilder/" + card.toString() + ".jpg";
+			icon = loadImage(base, cardW, cardH);
 		}
+		JLabel label = (icon != null) ? new JLabel(icon) : new JLabel(card.isFaceDown() ? "??" : card.toString());
+
+		int index = dealerCardsPanel.getComponentCount();
+		int x = 400 + index * cardW;
+		int y = 100;
+
+		label.setBounds(x, y, cardW, cardH);
+
+		dealerCardsPanel.add(label);
+		dealerCardsPanel.setComponentZOrder(label, 0);
+		dealerCardsPanel.revalidate();
+		dealerCardsPanel.repaint();
 	}
 
 	public void refreshDealerCards(Hand hand) {
@@ -170,7 +221,6 @@ public class GUI extends JFrame {
 		}
 		dealerCardsPanel.revalidate();
 		dealerCardsPanel.repaint();
-
 	}
 
 	public void clearCards() {

@@ -11,7 +11,7 @@ public class Deck {
     }
 
     public void createDeck(int numofDecks) {
-        String[] suits = { "Herz", "Karo", "Kreuz", " Pik " };
+        String[] suits = { "Herz", "Karo", "Kreuz", "Pik" };
         String[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Bube", "Dame", "König", "Ass" };
         for (int i = 0; i < numofDecks; i++) {
             for (String suit : suits) {
