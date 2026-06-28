@@ -25,6 +25,7 @@ public class GUI extends JFrame {
 	private JPanel buttonPanel;
 	private JPanel playerCardsPanel;
 	private JPanel dealerCardsPanel;
+	private JLabel lblInfo;
 	private JLabel lblSpielerWert;
 	private JLabel lblDealerWert;
 	private JLabel lblPlayer;

@@ -7,6 +7,7 @@ public class Main
             public void run() {
             	try {
 					Game game = new Game();
+                    game.startGame();
 				} catch (Exception e) {
 					e.printStackTrace(); 
 				}

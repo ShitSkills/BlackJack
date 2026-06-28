@@ -73,6 +73,7 @@ public class Game {
             endRound("Blackjack! Spieler gewinnt.");
             stand();
         }
+        
     }
 
     public void stand() {
@@ -116,5 +117,6 @@ public class Game {
 
     public void endRound(String message) {
         System.out.println(message);
+        
     }
 }

@@ -63,6 +63,7 @@ public class Hand {
     }
 
     public boolean isBust() {
+        System.out.println("Hand Value: " + getValue());
         return getValue() > 21;
     }
 
