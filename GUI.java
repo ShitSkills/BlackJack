@@ -241,4 +241,28 @@ public class GUI extends JFrame {
 		lblDealerWert.setText("Wert: " + value);
 	}
 
+	public void disableGameButtons()
+	{
+		btnHit.setEnabled(false);
+		btnStand.setEnabled(false);
+		btnDouble.setEnabled(false);
+		btnSplit.setEnabled(false);
+		btnHit.setVisible(false);
+		btnStand.setVisible(false);
+		btnDouble.setVisible(false);
+		btnSplit.setVisible(false);
+	}
+
+	public void enableGameButtons()
+	{
+		btnHit.setEnabled(true);
+		btnStand.setEnabled(true);
+		btnDouble.setEnabled(true);
+		btnSplit.setEnabled(true);
+		btnHit.setVisible(true);
+		btnStand.setVisible(true);
+		btnDouble.setVisible(true);
+		btnSplit.setVisible(true);
+	}
+
 }
