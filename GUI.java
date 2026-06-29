@@ -152,10 +152,11 @@ public class GUI extends JFrame {
 		btnSplit.addActionListener(e -> game.split());
 
 		lblInfo = new JLabel("Willkommen zu Blackjack!");
-		lblInfo.setFont(new Font("SansSerif", Font.BOLD, 18));
-		lblInfo.setForeground(Color.WHITE);
-		lblInfo.setBounds(10, cardH + 15, 300, 35);
-		playerCardsPanel.add(lblInfo);
+		lblInfo.setFont(new Font("SansSerif", Font.BOLD, 15));
+		lblInfo.setForeground(Color.BLUE);
+		lblInfo.setBounds(400, 0, 500, 30);
+		statusPanel.add(lblInfo);
+		statusPanel.setComponentZOrder(lblInfo, 0);
 	}
 
 	private ImageIcon loadImage(String path, int w, int h) {

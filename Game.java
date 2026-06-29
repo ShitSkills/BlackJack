@@ -26,6 +26,8 @@ public class Game {
         g.clearCards();
         player.resetHand();
         dealer.resetHand();
+        g.enableGameButtons();
+        g.clearInfoLabel();
 
         // Spieler erhält 2 Karten
         Card cardp1 = deck.drawCard();
@@ -116,7 +118,7 @@ public class Game {
     }
 
     public void endRound(String message) {
-        System.out.println(message);
-        
+        g.setInfoLabel(message);
+        g.disableGameButtons();   
     }
 }
