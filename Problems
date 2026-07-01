@@ -3,12 +3,12 @@ Erstellt von Simon, fügt gerne was hinzu oder entfernt behobenes:
 Probleme die mir bis jetzt aufgefallen sind:
 Änderungen sind auch dabei.
 
-- man kann hitten nachdem man gebusted ist              
-- nicht ganz sicher: Der check ob man gebusted ist kommt erst mit einer wiederum neuen Karte. Ich war mit 24 noch nicht gebusted
-- Text ob man gewonnen hat wird im terminal angezeigt -> eigenes Panel im Gui (mach ich)
-- nachdem man busted kann man immer noch stand auslösen
+
+
 - jemand muss nachschauen ob die 6 decks ingesamt richtig gemischt werden(also alle gleichzeitig und nicht ein Deck nach dem anderen) und ob nach "Neues Spiel" das gleiche Deck genutzt wird
 - zum oberen: wenn 2 decks übrig sind, wird neu gemischt, währenddessen muss der Spieler warten
+- Farben Ändern
+- Auto Check if Blackjack (Dealer & Player)
 
 
 
@@ -16,3 +16,6 @@ Erledigt:
 - Dealer bekommt noch keine Face Down Card  
 - Feld das Wert zeigt ist zu klein 
 - erste Runde bekommt jeder Karten
+- Text ob man gewonnen hat wird im terminal angezeigt -> eigenes Panel im Gui (mach ich)
+- man kann hitten nachdem man gebusted ist
+- nachdem man busted kann man immer noch stand auslösen
