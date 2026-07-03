@@ -6,10 +6,12 @@ Probleme die mir bis jetzt aufgefallen sind:
 
 
 - jemand muss nachschauen ob die 6 decks ingesamt richtig gemischt werden(also alle gleichzeitig und nicht ein Deck nach dem anderen) und ob nach "Neues Spiel" das gleiche Deck genutzt wird
-- zum oberen: wenn 2 decks übrig sind, wird neu gemischt, währenddessen muss der Spieler warten
 - Farben Ändern
 - Auto Check if Blackjack (Dealer & Player)
-- Karten überlagern sich mit 
+- Split 
+- Couble and Chips
+- Insurance
+
 
 
 Erledigt:
@@ -19,3 +21,5 @@ Erledigt:
 - Text ob man gewonnen hat wird im terminal angezeigt -> eigenes Panel im Gui (mach ich)
 - man kann hitten nachdem man gebusted ist
 - nachdem man busted kann man immer noch stand auslösen
+- wenn 2 decks übrig sind, wird neu gemischt, währenddessen muss der Spieler warten
+- Karten überlagern sich mit 

@@ -29,6 +29,12 @@ public class Game {
         g.enableGameButtons();
         g.clearInfoLabel();
 
+        // check if NeuMischen
+        if (deck.size() <= 104) {
+            deck.resetDeck();
+            g.setInfoLabel("Karten wurden gemischt!");
+        }
+
         // Spieler erhält 2 Karten
         Card cardp1 = deck.drawCard();
         Card cardp2 = deck.drawCard();
@@ -75,7 +81,7 @@ public class Game {
             endRound("Blackjack! Spieler gewinnt.");
             stand();
         }
-        
+
     }
 
     public void stand() {
@@ -119,6 +125,6 @@ public class Game {
 
     public void endRound(String message) {
         g.setInfoLabel(message);
-        g.disableGameButtons();   
+        g.disableGameButtons();
     }
 }

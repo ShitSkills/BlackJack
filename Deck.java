@@ -3,9 +3,11 @@ import java.util.Collections;
 
 public class Deck {
     private ArrayList<Card> cards;
+    private ArrayList<Card> usedCards;
 
     public Deck(int numofDecks) {
         cards = new ArrayList<>();
+        usedCards = new ArrayList<>();
         createDeck(numofDecks);
 
     }
@@ -29,7 +31,15 @@ public class Deck {
     }
 
     public Card drawCard() {
+        Card card = cards.get(0);
+        usedCards.add(card);
         return cards.remove(0);
+    }
+
+    public void resetDeck() {
+        cards.addAll(usedCards);
+        usedCards.clear();
+        shuffle();
     }
 
     public int size() {
