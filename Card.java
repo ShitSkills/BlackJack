@@ -1,7 +1,7 @@
 public class Card {
 
-    private String rank; // 2 - 10 B, Q, K, A
-    private String suit; // P , H,
+    private String rank; // 2 - 10 Bube, Dame, König, Ass
+    private String suit; // Pik, Herz, Kreuz, Karo
     private boolean faceDown; // Ist die Karte verdeckt?
 
     public Card(String suit, String rank) {
